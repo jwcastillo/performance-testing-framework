@@ -11,6 +11,19 @@ COPY plugins.txt /usr/share/jenkins/ref/
 
 USER root
 RUN jenkins-plugin-cli --plugins "greenballs"
+RUN jenkins-plugin-cli --plugins "htmlpublisher"
+RUN jenkins-plugin-cli --plugins "show-build-parameters"
+RUN jenkins-plugin-cli --plugins "filesystem-list-parameter-plugin"
+RUN jenkins-plugin-cli --plugins "git"
+RUN jenkins-plugin-cli --plugins "rebuild"
+RUN jenkins-plugin-cli --plugins "persistent-parameter"
+RUN jenkins-plugin-cli --plugins "postbuild-task"
+RUN jenkins-plugin-cli --plugins "parameter-separator"
+RUN jenkins-plugin-cli --plugins "log-parser"
+RUN jenkins-plugin-cli --plugins "compress-buildlog"
+RUN jenkins-plugin-cli --plugins "groovy-postbuild"
+RUN jenkins-plugin-cli --plugins "antisamy-markup-formatter"
+RUN jenkins-plugin-cli --plugins "ssh-slaves"
 RUN apt-get -y update && \
 apt-get -y install sudo && \
 sudo usermod -aG staff jenkins && \
