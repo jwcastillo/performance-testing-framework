@@ -8,6 +8,8 @@ JENKINS_API="http://$JENKINS_USER:$JENKINS_PASSWORD@$JENKINS_HOST:$JENKINS_PORT"
 LOCATION_CONFIG="/var/jenkins_home/jenkins.model.JenkinsLocationConfiguration.xml";
 JENKINS_URL_CONFIG=${JENKINS_URL_CONFIG:-"http:\\/\\/127.0.0.1:8181\\/"};
 
+curl -O http://localhost:8080/jnlpJars/jenkins-cli.jar && mv jenkins-cli.jar /var/jenkins_home/war/WEB-INF/
+
 bash -x /usr/local/bin/jenkins.sh &
 
 echo "Waiting Jenkins to start"
