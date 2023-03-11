@@ -61,7 +61,7 @@ start cmd as administrator and execute ```setx COMPOSE_CONVERT_WINDOWS_PATHS "1"
 ## Installing
 
 1. Clone this repository
-```git clone https://github.com/serputko/performance-testing-framework.git``` 
+```git clone https://github.com/l-SK-l/performance-testing-framework.git``` 
 2. open performance-testing-framework dir
 
 **For Backend testing:**
