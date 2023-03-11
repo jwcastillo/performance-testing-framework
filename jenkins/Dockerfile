@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.318
+FROM jenkins/jenkins:2.387.1-lts
 
 ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false -Dhudson.model.DirectoryBrowserSupport.CSP=''"
 COPY security.groovy /usr/share/jenkins/ref/init.groovy.d/security.groovy
@@ -10,8 +10,8 @@ COPY hudson.plugins.logparser.LogParserPublisher.xml /var/jenkins_home/hudson.pl
 COPY plugins.txt /usr/share/jenkins/ref/
 
 USER root
-RUN xargs /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt && \
-apt-get -y update && \
+RUN jenkins-plugin-cli --plugins "greenballs"
+RUN apt-get -y update && \
 apt-get -y install sudo && \
 sudo usermod -aG staff jenkins && \
 echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
