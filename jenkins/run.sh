@@ -1,4 +1,5 @@
 #!/bin/sh
+sleep 60
 
 JENKINS_USER=${JENKINS_ADMIN_LOGIN:-admin};
 JENKINS_PASSWORD=${JENKINS_ADMIN_PASSWORD:-admin};
@@ -58,7 +59,7 @@ cp /usr/share/jenkins/ref/init.groovy.d/configure-markup-formatter.groovy /var/j
 
 echo "Restarting Jenkins"
 
-curl -X POST "$JENKINS_API/restart"
+curl -X POST "$JENKINS_API/safeRestart"
 
 wait $!
 
