@@ -63,16 +63,17 @@ start cmd as administrator and execute ```setx COMPOSE_CONVERT_WINDOWS_PATHS "1"
 1. Clone this repository
 ```git clone https://github.com/l-SK-l/performance-testing-framework.git``` 
 2. open performance-testing-framework dir
+```cd performance-testing-framework/```
 
 **For Backend testing:**
 
-3. (optional) if you want to update existing services
+1. (optional) if you want to update existing services
 ```
 docker-compose pull
 docker-compose build 
 docker-compose down
 ```
-4. ```docker-compose up -d```
+1. ```docker-compose up -d```
 
 **For Frontend + Backend testing**
 
