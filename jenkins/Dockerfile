@@ -31,5 +31,5 @@ sudo usermod -aG staff jenkins && \
 echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 ENV PATH "$PATH:/usr/local/bin/dind/"
 
-RUN mv jenkins-cli.jar /var/jenkins_home/war/WEB-INF/
+RUN mv /jenkins-cli.jar /var/jenkins_home/war/WEB-INF/
 ENTRYPOINT ["bash","-x","/run.sh",">", "log_run.txt"]
