@@ -1,18 +1,3 @@
-<!--- 
-Copyright © 2017-2018 Anton Serputko. Contacts: serputko.a@gmail.com
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
--->
 
 # Performance testing framework
 
@@ -53,11 +38,6 @@ To run framework install docker: https://docs.docker.com/engine/installation/.
 
 You should be able to run ```docker run hello-world``` with no errors.
 
-**For Windows**:
-- share C:\ D:\ drives with docker: https://blogs.msdn.microsoft.com/stevelasker/2016/06/14/configuring-docker-for-windows-volumes/
-- starting from 18.0.3 docker version you need to set up windows user variable to handle linux VM path in docker-compose:
-start cmd as administrator and execute ```setx COMPOSE_CONVERT_WINDOWS_PATHS "1" /M``` or simply install older version of docker https://download.docker.com/win/stable/15139/Docker%20for%20Windows%20Installer.exe
-
 ## Installing
 
 1. Clone this repository
@@ -74,16 +54,23 @@ docker-compose build
 docker-compose down
 ```
 1. ```docker-compose up -d```
+```
+docker-compose down
+docker-compose up -d
+```
+
+2. Wait 5 minutes and restart services
+
 
 **For Frontend + Backend testing**
 
-3. (optional) if you want to update existing services
+1. (optional) if you want to update existing services
 ```
 docker-compose -f docker-compose-with-frontend.yml pull
 docker-compose -f docker-compose-with-frontend.yml build
 docker-compose -f docker-compose-with-frontend.yml down
 ```
-4. ```docker-compose -f docker-compose-with-frontend.yml up -d```
+1. ```docker-compose -f docker-compose-with-frontend.yml up -d```
 
 All containers should be up and running
 

@@ -34,7 +34,7 @@
         <hudson.model.StringParameterDefinition>
           <name>DURATION</name>
           <description>Set test duration(sec)</description>
-          <defaultValue>600</defaultValue>
+          <defaultValue>60</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
         <alex.jenkins.plugins.FileSystemListParameterDefinition plugin="filesystem-list-parameter-plugin@0.0.4">
