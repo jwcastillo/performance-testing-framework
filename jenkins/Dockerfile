@@ -5,7 +5,7 @@ COPY security.groovy /usr/share/jenkins/ref/init.groovy.d/security.groovy
 COPY configure-markup-formatter.groovy /usr/share/jenkins/ref/init.groovy.d/configure-markup-formatter.groovy
 COPY jobs/ /jobs/
 COPY run.sh /run.sh 
-COPY jenkins-cli.jar /var/jenkins_home/war/WEB-INF/jenkins-cli.jar
+COPY jenkins-cli.jar /jenkins-cli.jar
 COPY error_parsing /error_parsing
 COPY hudson.plugins.logparser.LogParserPublisher.xml /var/jenkins_home/hudson.plugins.logparser.LogParserPublisher.xml
 COPY plugins.txt /usr/share/jenkins/ref/
@@ -30,5 +30,6 @@ apt-get -y install sudo && \
 sudo usermod -aG staff jenkins && \
 echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 ENV PATH "$PATH:/usr/local/bin/dind/"
+CMD [ "mv /jenkins-cli.jar /var/jenkins_home/war/WEB-INF/jenkins-cli.jar"]
 
-ENTRYPOINT ["bash","-x","/run.sh",">", "log_run.txt"]
+ENTRYPOINT bash -x /run.sh > log_run.txt

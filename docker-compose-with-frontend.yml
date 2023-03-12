@@ -67,7 +67,6 @@ services:
         #- ./graphite/conf/storage-schemas.conf:/opt/graphite/conf/storage-schemas.conf
         #- ./graphite/conf/storage-aggregation.conf:/opt/graphite/conf/storage-aggregation.conf
         #- ./graphite/conf/carbon.conf:/opt/graphite/conf/carbon.conf
-      restart: always
    grafana-setup:
       image: sitespeedio/grafana-bootstrap:sitespeed.io-4.6
       container_name: grafana-setup
