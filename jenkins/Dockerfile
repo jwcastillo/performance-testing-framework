@@ -30,6 +30,5 @@ apt-get -y install sudo && \
 sudo usermod -aG staff jenkins && \
 echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 ENV PATH "$PATH:/usr/local/bin/dind/"
-CMD [ "mv /jenkins-cli.jar /var/jenkins_home/war/WEB-INF/jenkins-cli.jar"]
 
 ENTRYPOINT bash -x /run.sh > log_run.txt

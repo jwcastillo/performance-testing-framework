@@ -1,4 +1,6 @@
 #!/bin/sh
+# curl -O http://localhost:8080/jnlpJars/jenkins-cli.jar && mv jenkins-cli.jar /var/jenkins_home/war/WEB-INF/
+mv jenkins-cli.jar /var/jenkins_home/war/WEB-INF/
 
 JENKINS_USER=${JENKINS_ADMIN_LOGIN:-admin};
 JENKINS_PASSWORD=${JENKINS_ADMIN_PASSWORD:-admin};
@@ -8,17 +10,16 @@ JENKINS_API="http://$JENKINS_USER:$JENKINS_PASSWORD@$JENKINS_HOST:$JENKINS_PORT"
 LOCATION_CONFIG="/var/jenkins_home/jenkins.model.JenkinsLocationConfiguration.xml";
 JENKINS_URL_CONFIG=${JENKINS_URL_CONFIG:-"http:\\/\\/127.0.0.1:8181\\/"};
 
-# curl -O http://localhost:8080/jnlpJars/jenkins-cli.jar && mv jenkins-cli.jar /var/jenkins_home/war/WEB-INF/
-
-bash -x /usr/local/bin/jenkins.sh &
+bash -x /usr/local/bin/jenkins.sh &  # Запускаем Jenkins в фоновом режиме
 
 echo "Waiting Jenkins to start"
+sleep 60
 
-java -jar /var/jenkins_home/war/WEB-INF/jenkins-cli.jar -s $JENKINS_API version
-while [ $? -ne 0 ]; do
-  echo -n "."
+java -jar /var/jenkins_home/war/WEB-INF/jenkins-cli.jar -s $JENKINS_API version  # Запрашивает версию Jenkins
+while [ $? -ne 0 ]; do  #Запускаем цикл, который будет продолжаться до тех пор, пока версия Jenkins не будет успешно получена (возвращаемый код $? будет равен 0)
+  echo -n "."  # Выводим точку на экран, чтобы показать, что скрипт все еще ожидает, пока Jenkins запустится.
   sleep 2
-  java -jar /var/jenkins_home/war/WEB-INF/jenkins-cli.jar -s $JENKINS_API version
+  java -jar /var/jenkins_home/war/WEB-INF/jenkins-cli.jar -s $JENKINS_API version  # Запрашивает версию Jenkins ещё раз
 done
 echo " "
 
