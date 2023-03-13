@@ -8,7 +8,6 @@ COPY run.sh /run.sh
 COPY jenkins-cli.jar /jenkins-cli.jar
 COPY error_parsing /error_parsing
 COPY hudson.plugins.logparser.LogParserPublisher.xml /var/jenkins_home/hudson.plugins.logparser.LogParserPublisher.xml
-COPY plugins.txt /usr/share/jenkins/ref/
 
 USER root
 RUN jenkins-plugin-cli --plugins "greenballs"
