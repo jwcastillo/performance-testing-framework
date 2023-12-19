@@ -1,15 +1,16 @@
 version: '3'
 services:
    grafana:
-     container_name: grafana
+     image: grafana/grafana:latest
      links:
        - influxdb:influxdb
-     image: grafana/grafana
-     build: ./grafana
      user: "104"
      ports:
        - "8857:3000"
      environment:
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_BASIC_ENABLED=false
        - GF_SECURITY_ADMIN_PASSWORD=admin
        - GF_SECURITY_ADMIN_USER=admin
        - GF_AUTH_ANONYMOUS_ENABLED=true
@@ -17,8 +18,7 @@ services:
        - GF_USERS_ALLOW_ORG_CREATE=false
        - GF_INSTALL_PLUGINS=briangann-datatable-panel
      volumes:
-       - grafana-home:/var/lib/grafana/
-       - grafana-conf:/etc/grafana/
+      - ./grafana:/etc/grafana/provisioning/
      restart: always 
    influxdb:
      image: influxdb
@@ -79,7 +79,7 @@ services:
         # you need to allow docker to access host drives
         # https://blogs.msdn.microsoft.com/stevelasker/2016/06/14/configuring-docker-for-windows-volumes/
         # currently tests will be fetched from ./jmeter/scenarios/ directory
-        - ./jmeter/scenarios/:/var/lib/jmeter-scenarios/
+        - ./jmeter/tests/:/var/lib/jmeter-tests/
       restart: always
    portainer:
       image: portainer/portainer

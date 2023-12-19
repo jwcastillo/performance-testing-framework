@@ -1,0 +1,34 @@
+# For configuration options, see 
+#   https://grafana.com/docs/grafana/latest/administration/provisioning/#example-data-source-config-file
+
+apiVersion: 1
+
+datasources:
+  - name: telegraf
+    type: influxdb
+    url: http://influxdb:8086
+    access: proxy
+    isDefault: false
+    database: telegraf
+    user: ""
+    password: ""
+    editable: false
+  - name: influxdb_timeshift_proxy
+    type: influxdb
+    url: http://influxdb-timeshift-proxy:8089
+    access: proxy
+    isDefault: false
+    database: jmeter
+    user: ""
+    password: ""
+    editable: false
+  - name: jmeter
+    type: influxdb
+    url: http://influxdb:8086
+    access: proxy
+    isDefault: true
+    database: jmeter
+    user: ""
+    password: ""
+    editable: false
+
